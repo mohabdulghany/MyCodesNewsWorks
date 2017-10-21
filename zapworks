@@ -1,1 +1,16 @@
+1-load zapper from app.
+==========================
+         Intent intent = getPackageManager().getLaunchIntentForPackage("com.zappar.Zappar");
+                if (intent != null) {
+                    // We found the activity now start the activity
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                } else {
+                    // Bring user to the market or let them choose an app?
+                    intent = new Intent(Intent.ACTION_VIEW);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setData(Uri.parse("market://details?id=" + "com.zappar.Zappar"));
+                    startActivity(intent);
+                }
+==========================
 
